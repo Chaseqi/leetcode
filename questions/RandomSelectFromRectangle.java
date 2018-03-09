@@ -1,4 +1,4 @@
-package chase;
+package questions.leetcode.questions;
 
 import java.util.ArrayList;
 import java.util.Collections;
