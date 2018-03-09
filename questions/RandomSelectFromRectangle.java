@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.TreeMap;
 
+// https://www.careercup.com/question?id=5657048330010624
+// https://www.careercup.com/question?id=5135474053087232
 public class RandomSelectFromRectangle {
 
 	Random rand = new Random();
