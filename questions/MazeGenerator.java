@@ -1,8 +1,12 @@
 package questions.leetcode.questions;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class MazeGenerator {
+	
+	private static Random rand = new Random();
 	public Cell[][] make(int height, int width, int x, int y) {
 		Cell[][] maze = new Cell[height][width];
 		
@@ -30,7 +34,12 @@ public class MazeGenerator {
 		int m = maze[0].length;
 		
 		visited[x][y] = true;
-		for (Direction d : Direction.values()) {
+		Direction[] directions = Direction.values();
+		int startIndex = rand.nextInt(4);
+		
+		for (int i = 0; i < 4; i++) {
+			
+			Direction d = directions[(startIndex + i) % 4];
 			int newX = x + d.x;
 			int newY = y + d.y;
 			
