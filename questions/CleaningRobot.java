@@ -39,14 +39,12 @@ public class CleaningRobot {
 			int newX = x + newDirection[0];
 			int newY = y + newDirection[1];
 			
-			turnLeft(1);
-			
 			if (!visited.contains(new Coordinate(newX, newY)) && move()) {
 				dfs(newX, newY, (d + i) % 4, visited);
 			}
+			
+			turnLeft(1);
 		}
-		
-		turnLeft(1);
 		
 		// go back to the previous location
 		goBack();
