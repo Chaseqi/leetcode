@@ -43,7 +43,7 @@ public class CleaningRobot {
 				dfs(newX, newY, (d + i) % 4, visited);
 			}
 			
-			turnLeft(1);
+			turnRight(1);
 		}
 		
 		// go back to the previous location
@@ -51,9 +51,9 @@ public class CleaningRobot {
 	}
 	
 	private void goBack() {
-		turnLeft(2);
+		turnRight(2);
 		move();
-		turnLeft(2);
+		turnRight(2);
 	}
 	
 	private void clean() {}
