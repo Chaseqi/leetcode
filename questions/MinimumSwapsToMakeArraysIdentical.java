@@ -13,6 +13,8 @@ import java.util.Map;
 // which are shown below,
 // swap 4 with 8,   arrB = {8, 6, 4, 3}
 // swap 8 with 3,   arrB = {3, 6, 4, 8}
+
+// https://www.geeksforgeeks.org/minimum-swaps-to-make-two-array-identical/
 public class MinimumSwapsToMakeArraysIdentical {
 	
 	public static int minimumSwaps(int[] arrA, int[] arrB) {
