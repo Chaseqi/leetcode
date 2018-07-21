@@ -1,7 +1,16 @@
 package questions.leetcode.questions.google.chase;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
+/**
+ * connected 4 game
+   input n, k, n是可以放石子的位置的总数，k是连续的石子的个数
+   设计 boolean play(int pos), 当连续石子的个数达到k是返回True，i是新放的石子的位置		
+ * @author Chase
+ *
+ */
 public class Connected4 {
 
 	int[] stones;
@@ -9,12 +18,35 @@ public class Connected4 {
 	int[] size; // the size of the component the stone is in.
 	int k;
 	
+	Map<Integer, Integer> map = new HashMap<>(); // index --> the number of continuous stones
+	
 	public Connected4(int k, int n) {
 		this.stones = new int[n];
 		this.fathers = new int[n];
 		Arrays.fill(fathers, -1);
 		this.size = new int[n];
 		this.k = k;
+	}
+	
+	public boolean play_1(int i) {
+		int left = i;
+		int right = i;
+		
+		if (i > 0 && stones[i - 1] != 0) {
+			left = i - 1 - map.get(i - 1) + 1;
+		}
+		
+		if (i < stones.length - 1 && stones[i + 1] != 0) {
+			right = i + 1 + map.get(i + 1) - 1;
+		}
+		
+		int count = right - left + 1;
+		stones[i] = 1;
+		
+		map.put(left, count);
+		map.put(right, count);
+		
+		return count >= k;
 	}
 	
 	public boolean play(int i) {
@@ -62,9 +94,9 @@ public class Connected4 {
 	
 	public static void main(String[] args) {
 		Connected4 c = new Connected4(3, 6);
-        System.out.println(c.play(2));
-        System.out.println(c.play(3));
-        System.out.println(c.play(5));
-        System.out.println(c.play(4));
+        System.out.println(c.play_1(2));
+        System.out.println(c.play_1(3));
+        System.out.println(c.play_1(4));
+//        System.out.println(c.play_1(4));
 	}
 }
