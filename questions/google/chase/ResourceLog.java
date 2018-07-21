@@ -1,4 +1,4 @@
-package questions.leetcode.questions.google;
+package questions.leetcode.questions.google.chase;
 
 import java.util.ArrayList;
 import java.util.Collections;

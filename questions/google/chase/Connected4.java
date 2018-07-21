@@ -9,7 +9,7 @@ import java.util.Map;
    input n, k, n是可以放石子的位置的总数，k是连续的石子的个数
    设计 boolean play(int pos), 当连续石子的个数达到k是返回True，i是新放的石子的位置		
  * @author Chase
- *
+ * http://www.1point3acres.com/bbs/thread-434363-1-1.html
  */
 public class Connected4 {
 
