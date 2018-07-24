@@ -22,3 +22,4 @@ July 19:
     #  \                      \
     #   D                      A
 http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=411072
+5. Convert sorted array to the binary search tree.
