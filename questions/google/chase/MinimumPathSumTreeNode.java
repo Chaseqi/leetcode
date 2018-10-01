@@ -5,17 +5,19 @@ import java.util.Map;
 
 public class MinimumPathSumTreeNode {
 
-	int result = Integer.MAX_VALUE;
-	public int minimumPathSum(TreeNode root) {
+	static int result = Integer.MAX_VALUE;
+	public static int minimumPathSum(TreeNode root) {
 		Map<TreeNode, Integer> rootToChildCount = new HashMap<>();
 		nodeCount(root, rootToChildCount);
 		int rootPathSum = rootPathSum(root, 0);
+		
+		System.out.println(rootPathSum);
 		
 		pathSum(root, rootToChildCount, rootPathSum);
 		return result;
 	}
 	
-	private int rootPathSum(TreeNode root, int level) {
+	private static int rootPathSum(TreeNode root, int level) {
 		if (root == null) {
 			return 0;
 		}
@@ -27,7 +29,7 @@ public class MinimumPathSumTreeNode {
 		return result;
 	}
 	
-	private int nodeCount(TreeNode root, Map<TreeNode, Integer> rootToChildCount) {
+	private static int nodeCount(TreeNode root, Map<TreeNode, Integer> rootToChildCount) {
 		if (root == null) {
 			return 0;
 		}
@@ -40,15 +42,36 @@ public class MinimumPathSumTreeNode {
 		return count;
 	}
 	
-	private void pathSum(TreeNode root, Map<TreeNode, Integer> rootToChildCount, int rootPathSum) {
-		result = Math.min(result, rootPathSum);
+	private static void pathSum(TreeNode root, Map<TreeNode, Integer> rootToChildCount, int rootPathSum) {
+		if (root == null) {
+			return;
+		}
 		
-		pathSum(root.left, rootToChildCount, rootPathSum + rootToChildCount.size() - 2 * rootToChildCount.get(root.left));
-		pathSum(root.right, rootToChildCount, rootPathSum + rootToChildCount.size() - 2 * rootToChildCount.get(root.right));
+		result = Math.min(result, rootPathSum);
+		if (root.left != null) {
+			pathSum(root.left, rootToChildCount, rootPathSum + rootToChildCount.size() - 2 * rootToChildCount.get(root.left));
+		}
+		
+		if (root.right != null) {
+			pathSum(root.right, rootToChildCount, rootPathSum + rootToChildCount.size() - 2 * rootToChildCount.get(root.right));
+		}
 	}
 	
-	private class TreeNode {
+	private static class TreeNode {
 		TreeNode left;
 		TreeNode right;
+	}
+	
+	public static void main(String[] args) {
+		TreeNode root = new TreeNode();
+		TreeNode left = new TreeNode();
+		TreeNode right = new TreeNode();
+		TreeNode leftLeft = new TreeNode();
+		
+		root.left = left;
+		root.right = right;
+		root.left.left = leftLeft;
+		
+		System.out.println(minimumPathSum(root));
 	}
 }
