@@ -43,9 +43,8 @@ public class MinimumPathSumTreeNode {
 	private void pathSum(TreeNode root, Map<TreeNode, Integer> rootToChildCount, int rootPathSum) {
 		result = Math.min(result, rootPathSum);
 		
-		int temp = rootPathSum + rootToChildCount.size() - 2 * rootToChildCount.get(root);
-		pathSum(root.left, rootToChildCount, temp);
-		pathSum(root.right, rootToChildCount, temp);
+		pathSum(root.left, rootToChildCount, rootPathSum + rootToChildCount.size() - 2 * rootToChildCount.get(root.left));
+		pathSum(root.right, rootToChildCount, rootPathSum + rootToChildCount.size() - 2 * rootToChildCount.get(root.right));
 	}
 	
 	private class TreeNode {
