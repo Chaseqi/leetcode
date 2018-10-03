@@ -31,7 +31,7 @@ public class SplitNodesApi {
 	 * @param nodes
 	 * @return
 	 */
-	public List<Node> getEdges(List<Node> nodes) {
+	public List<Node> getBoundary(List<Node> nodes) {
 		return null;
 	}
 	
@@ -41,7 +41,7 @@ public class SplitNodesApi {
 	 * @param edge2
 	 * @return
 	 */
-	public boolean isIntersected(List<Node> boundary1, List<Node> boundary2) {
+	public boolean hasIntersection(List<Node> boundary1, List<Node> boundary2) {
 		return true;
 	}
 	
