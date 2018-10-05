@@ -13,6 +13,7 @@ public class CharacterSubstitution {
 		// Make sure the char in source is not mapped to multiple chars in target
 		int n = source.length();
 		Map<Character, Character> sourceCharToTargetChar = new HashMap<>();
+		Set<Character> chars = new HashSet<>();
 		
 		for (int i = 0; i < n; i++) {
 			Character targetChar = sourceCharToTargetChar.get(source.charAt(i));
@@ -22,9 +23,16 @@ public class CharacterSubstitution {
 			}
 			
 			sourceCharToTargetChar.put(source.charAt(i), target.charAt(i));
+			chars.add(source.charAt(i));
+			chars.add(target.charAt(i));
+		}
+
+		// Assume you only use lower case letters
+		if (chars.size() < 26) {
+			return true;
 		}
 		
-		// check if there is a cycle in the graph
+		// check if there is a cycle in the graph and there is no extra character left
 		Map<Character, Set<Character>> graph = new HashMap<>();
 		for (int i = 0; i < n; i++) {
 			graph.computeIfAbsent(source.charAt(i), k -> new HashSet<>()).add(target.charAt(i));
