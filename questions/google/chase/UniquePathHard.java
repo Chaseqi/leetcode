@@ -48,7 +48,7 @@ public class UniquePathHard {
 			}
 		}
 		
-		// follow up: what if the robot has to go under ith row
+		// follow up: what if the robot has to go under ith row dp[i * 2][m - 1]
 		return dp[0][m - 1];
 	}
 	
