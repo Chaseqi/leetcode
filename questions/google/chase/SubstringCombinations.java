@@ -18,7 +18,7 @@ public class SubstringCombinations {
 			charToIndex.put(source.charAt(i), i);
 		}
 		
-		int prevIndex = -1;
+		int prevIndex = -2;
 		int count = 0;
 		for (char c : target.toCharArray()) {
 			Integer index = charToIndex.get(c);
@@ -35,7 +35,7 @@ public class SubstringCombinations {
 			prevIndex = index;
 		}
 		
-		return count + 1;
+		return count;
 	}
 	
 	public static int substringCombinationWithDuplicate(String source, String target) {
@@ -74,7 +74,7 @@ public class SubstringCombinations {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(substringCombinationsWithoutDuplicate("ABZ", "ABABZ"));
+		System.out.println(substringCombinationsWithoutDuplicate("BAZ", "BZABAZ"));
 		System.out.println(substringCombinationWithDuplicate("AABZ", "AABA"));
 	}
 }
