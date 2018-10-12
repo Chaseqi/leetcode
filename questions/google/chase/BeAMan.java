@@ -37,7 +37,7 @@ public class BeAMan {
 		}
 		
 		root.left = new TreeNode(x - nextDeck.x);
-		root.right = new TreeNode(x + nextDeck.length - x);
+		root.right = new TreeNode(nextDeck.x + nextDeck.length - x);
 		
 		constructTree(root.left, nextDeck.x, nextDeck.y, decks);
 		constructTree(root.right, nextDeck.x + nextDeck.length, nextDeck.y, decks);
