@@ -30,13 +30,8 @@ public class WordFinder {
 			chars.add(stream.getNext());
 			
 			// search backwards to see if any substring exists in the trie
-			String temp = trie.search(chars);
-			
-			if (temp != null) {
+			for (String temp : trie.search(chars)) {
 				results.add(new StringBuilder(temp).reverse().toString());
-				for (int i = 0; i < temp.length(); i++) {
-					chars.remove(chars.size() - 1);
-				}
 			}
 		}
 		
@@ -63,7 +58,8 @@ public class WordFinder {
 			prev.wordEnd = true;
 		}
 		
-		public String search(List<Character> chars) {
+		public List<String> search(List<Character> chars) {
+			List<String> result = new ArrayList<>();
 			TrieNode prev = root;
 			
 			StringBuilder sb = new StringBuilder();
@@ -71,18 +67,18 @@ public class WordFinder {
 				TrieNode child = prev.children.get(chars.get(i));
 				
 				if (child == null) {
-					return null;
+					return result;
 				}
 				
 				sb.append(chars.get(i));
 				if (child.wordEnd) {
-					return sb.toString();
+					result.add(sb.toString());
 				}
 				
 				prev = child;
 			}
 			
-			return null;
+			return result;
 		}
 	}
 	
@@ -110,10 +106,11 @@ public class WordFinder {
 	}
 	
 	public static void main(String[] args) {
-		Stream stream = new Stream(new char[]{'e','d','c','a','b','c','s','d','e','f'});
+		Stream stream = new Stream(new char[]{'t','a','b','c','e','t'});
 		List<String> words = new ArrayList<>();
-		words.add("edcab");
-		words.add("sdef");
+		words.add("abc");
+		words.add("bc");
+		words.add("abce");
 		
 		List<String> result = findWords(words, stream);
 		
