@@ -13,30 +13,30 @@ public class SodaMachine {
 		return dfs(sodas, 0, 0, lower, upper, memo);
 	}
 	
-	public static boolean dfs(List<Soda> sodas, int volumnLower, int volumnUpper, 
+	public static boolean dfs(List<Soda> sodas, int volumeLower, int volumeUpper, 
 				              int targetLower, int targetUpper, Map<String, Boolean> memo) {
 		
-		Boolean val = memo.get(volumnLower + "-" + volumnUpper);
+		Boolean val = memo.get(volumeLower + "-" + volumeUpper);
 		if (val != null) {
 			return val;
 		}
 		
-		if (volumnLower >= targetLower && volumnUpper <= targetUpper) {
+		if (volumeLower >= targetLower && volumeUpper <= targetUpper) {
 			return true;
 		}
 		
-		if (volumnUpper > targetUpper) {
+		if (volumeUpper > targetUpper) {
 			return false;
 		}
 		
 		for (Soda soda : sodas) {
-			if (dfs(sodas, volumnLower + soda.lower, volumnUpper + soda.upper, targetLower, targetUpper, memo)) {
-				memo.put(volumnLower + "-" + volumnUpper, true);
+			if (dfs(sodas, volumeLower + soda.lower, volumeUpper + soda.upper, targetLower, targetUpper, memo)) {
+				memo.put(volumeLower + "-" + volumeUpper, true);
 				return true;
 			}
 		}
 		
-		memo.put(volumnLower + "-" + volumnUpper, false);
+		memo.put(volumeLower + "-" + volumeUpper, false);
 		return false;
 	}
 	
